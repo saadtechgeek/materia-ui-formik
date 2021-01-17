@@ -12,11 +12,10 @@ import Container from '@material-ui/core/Container';
 import {addFirstname,addLastname,addFathername,addDOB} from '../Redux/Slice';
 
 let PersonalSchema = Yup.object().shape({
-  firstName: Yup.string().required('This field is required.'),
-  lastName: Yup.string().required('This field is required.'),
-  father: Yup.string().required('This field is required.'),
-  dob: Yup.string()
-      .required('This field is required.')
+  firstName: Yup.string().max(20, 'Must be 20 characters or less').required('This field is required.'),
+  lastName: Yup.string().max(20, 'Must be 20 characters or less').required('This field is required.'),
+  father: Yup.string().max(20, 'Must be 20 characters or less').required('This field is required.'),
+  dob: Yup.string().required('This field is required.').required('This field is required.')
 });
 const useStyles = makeStyles(theme => ({
   '@global': {

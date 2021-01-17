@@ -12,8 +12,8 @@ import Container from '@material-ui/core/Container';
 import {addAddress,addPhoneNo, addEmail} from '../Redux/Slice';
 
 let ContactSchema = Yup.object().shape({
-  email: Yup.string().required('This field is required.'),
-  phoneno: Yup.string().required('This field is required.'),
+  email: Yup.string().required('This field is required.') .email('Invalid email address'),
+  phoneno: Yup.string().required('This field is required.').max(11, 'Must be valid phone number'),
   address: Yup.string()
       .required('This field is required.')
 });
@@ -83,6 +83,7 @@ const Contact: React.FC<Props> = ({ handleNext }) => {
                                      name="phoneno"
                                      variant="outlined"
                                      fullWidth
+                                     type="number"
                                      onChange={handleChange}
                                      id="phoneno"
                                      label="Phone Number"
@@ -113,6 +114,7 @@ const Contact: React.FC<Props> = ({ handleNext }) => {
                                      }
                                  />
                              </Grid>
+
                              <Grid item xs={12}>
                                  <TextField
                                      // error={errors.password && touched.password}
