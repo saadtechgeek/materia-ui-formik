@@ -6,33 +6,30 @@ interface Props {
   handleNext: () => void
 }
 
-const FormOne: React.FC<Props> = ({ handleNext }) => {
+const UserData: React.FC<Props> = ({ handleNext }) => {
   return (
     <Formik
-      initialValues={{ firstName: '' }}
+      initialValues={{  email: '' }}
       validationSchema={Yup.object({
-        firstName: Yup.string()
-          .max(15, 'Must be 15 characters or less')
-          .required('Required')
+        email: Yup.string()
+          .email('Invalid email address')
+          .required('Required'),
       })}
       onSubmit={(values) => {
         setTimeout(() => {
           console.log(JSON.stringify(values, null, 2));
-          handleNext();
+          handleNext()
         }, 400);
       }}
     >
       <Form>
-        <label htmlFor="firstName">First Name</label>
-        <Field name="firstName" type="text" />
-        <ErrorMessage name="firstName" />
-
-        <br />
-
+        <label htmlFor="email">Email Address</label>
+        <Field name="email" type="email" />
+        <ErrorMessage name="email" />
         <button type="submit">Submit</button>
       </Form>
     </Formik>
   );
 };
 
-export default FormOne;
+export default UserData;

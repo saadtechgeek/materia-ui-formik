@@ -5,9 +5,9 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import FormOne from './form1'
-import FormTwo from './form2'
-import FormThree from './form3'
+import Personal from './components/Personal'
+import Contact from './components/Contact'
+import UserData from './components/UserData'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,17 +23,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Form 1 out of 3', 'Form 2 out of 3', 'Form 3 out of 3'];
+  return ['Personal Data', 'Contact Data', 'Your Data'];
 }
 
 function getStepContent(stepIndex:number,handleNext: () => void) {
   switch (stepIndex) {
     case 0:
-      return <FormOne handleNext={handleNext}/>;
+      return <Personal handleNext={handleNext}/>;
     case 1:
-      return <FormTwo handleNext={handleNext}/>;
+      return <Contact handleNext={handleNext}/>;
     case 2:
-      return <FormThree handleNext={handleNext}/>;
+      return <UserData handleNext={handleNext}/>;
     default:
       return 'Unknown stepIndex';
   }
