@@ -132,6 +132,7 @@ const Personal: React.FC<Props> = ({ handleNext }) => {
                                  />
                              </Grid>
                              <Grid item xs={12}>
+                               
                                  <TextField
                                      // error={errors.password && touched.password}
                                      variant="outlined"
@@ -139,9 +140,13 @@ const Personal: React.FC<Props> = ({ handleNext }) => {
                                      onChange={handleChange}
                                      name="dob"
                                      label="DOB"
-                                     type="text"
+                                     type="date"
+                                     defaultValue={new Date()}
                                      id="dob"
                                      autoComplete="dob"
+                                     InputLabelProps={{
+                                      shrink: true,
+                                    }}
                                      helperText={
                                          <span style={{color:'red'}}>
                                          {errors.dob && touched.dob
